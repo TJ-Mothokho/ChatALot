@@ -1,13 +1,21 @@
+import { Col, Row } from "react-bootstrap";
 import "./App.css";
-import { ButtonPrimary } from "./components/Buttons";
-import "bootstrap/dist/css/bootstrap.css";
+import { ButtonDanger } from "./components/Buttons";
 
 function App() {
   return (
     <>
-      <ButtonPrimary onClick={() => console.log("Clicked")}>
-        primary
-      </ButtonPrimary>
+      <Row>
+        <Col>
+          <input className="form-control" placeholder="hello" />
+        </Col>
+
+        <Col>
+          <ButtonDanger onClick={() => console.log("Clicked")}>
+            primary
+          </ButtonDanger>
+        </Col>
+      </Row>
     </>
   );
 }
