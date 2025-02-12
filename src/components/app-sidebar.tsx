@@ -16,13 +16,64 @@ import {
 } from "@/components/ui/sidebar";
 
 // Menu items.
-// const items = [
-//   {
-//     title: "Home",
-//     url: "#",
-//     icon: Home,
-//   }
-// ];
+const users = [
+  {
+    username: "rafxjay",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU",
+    fallback: "CN",
+  },
+  {
+    username: "johndoe",
+    image: "https://github.com/shadcn.png",
+    fallback: "CN",
+  },
+  {
+    username: "janedoe",
+    image: "https://github.com/janedoe.png",
+    fallback: "CN",
+  },
+  {
+    username: "alice",
+    image: "https://github.com/alice.png",
+    fallback: "CN",
+  },
+  {
+    username: "bobsmith",
+    image: "https://github.com/bobsmith.png",
+    fallback: "CN",
+  },
+  {
+    username: "charlie",
+    image: "https://github.com/charlie.png",
+    fallback: "CN",
+  },
+  {
+    username: "david",
+    image: "https://github.com/david.png",
+    fallback: "CN",
+  },
+  {
+    username: "eve",
+    image: "https://github.com/eve.png",
+    fallback: "CN",
+  },
+  {
+    username: "frank",
+    image: "https://github.com/frank.png",
+    fallback: "CN",
+  },
+  {
+    username: "grace",
+    image: "https://github.com/grace.png",
+    fallback: "CN",
+  },
+  {
+    username: "heidi",
+    image: "https://github.com/heidi.png",
+    fallback: "CN",
+  },
+];
 
 export function AppSidebar() {
   return (
@@ -35,17 +86,19 @@ export function AppSidebar() {
           <SidebarGroupLabel>Your contacts</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild className="h-15">
-                  <a href="#">
-                    <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                    <span className="text-lg">John Doe</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {users.map((user) => (
+                <SidebarMenuItem key={user.username}>
+                  <SidebarMenuButton asChild className="h-15">
+                    <a href="#">
+                      <Avatar>
+                        <AvatarImage src={user.image} />
+                        <AvatarFallback>{user.fallback}</AvatarFallback>
+                      </Avatar>
+                      <span className="text-lg">{user.username}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -55,27 +108,13 @@ export function AppSidebar() {
           <SidebarMenuButton asChild>
             <a href="#">
               <Settings />
-              <span>Settings</span>
+              <span className="text-lg">Settings</span>
             </a>
           </SidebarMenuButton>
         </SidebarMenuItem>
-        App created by{" "}
-        <a href="https://www.linkedin.com/in/TJ-Mothokho" target="_blank">
-          Tshiamo Mothokho
-        </a>
       </SidebarFooter>
     </Sidebar>
   );
 }
 
 //multiple contacts
-// {items.map((item) => (
-//     <SidebarMenuItem key={item.title}>
-//     <SidebarMenuButton asChild>
-//       <a href={item.url}>
-//         <item.icon />
-//         <span>{item.title}</span>
-//       </a>
-//     </SidebarMenuButton>
-//   </SidebarMenuItem>
-// ))}
