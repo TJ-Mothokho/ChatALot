@@ -1,3 +1,4 @@
+import DisplayAvatar from "@/components/DisplayAvatar";
 import { Message } from "@/components/Message";
 import MessageBubble from "@/components/MessageBubble";
 //import React, { ReactNode } from "react";
@@ -36,7 +37,13 @@ const ChatPage = () => {
 
   return (
     <div className="px-10">
-      <div className="justify-end flex items-center p-5"></div>
+      <div className="justify-start flex items-center p-5 bg-white text-black">
+        <DisplayAvatar
+          username="rafxjay"
+          fallback="CN"
+          image="https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU"
+        />
+      </div>
 
       {conversations.map((conversation, index) => (
         <div key={index}>
