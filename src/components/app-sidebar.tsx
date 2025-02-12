@@ -104,7 +104,7 @@ export function AppSidebar() {
                     <DisplayAvatar
                       username={user.username}
                       image={user.image}
-                      fallback={user.fallback}
+                      fallback={user.username[0].toUpperCase()}
                       url={user.url}
                     />
                   </SidebarMenuButton>
