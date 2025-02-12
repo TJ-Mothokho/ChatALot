@@ -164,7 +164,7 @@ export default function Register() {
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </Form>
   );

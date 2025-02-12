@@ -1,11 +1,14 @@
 //import { Col, Row } from "react-bootstrap";
 import "./App.css";
-import { LoginPage } from "./pages/LoginPage";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <LoginPage />
+      <Layout>
+        <HomePage />
+      </Layout>
     </>
   );
 }
