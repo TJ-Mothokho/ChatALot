@@ -5,12 +5,13 @@ interface Props {
   image: string;
   username: string;
   fallback: string;
+  url: string;
 }
 
-const DisplayAvatar = ({ image, username, fallback }: Props) => {
+const DisplayAvatar = ({ image, username, fallback, url }: Props) => {
   return (
     <div className="row">
-      <a href="#">
+      <a href={url}>
         <div className="flex justify-center">
           <Avatar>
             <AvatarImage src={image} />
