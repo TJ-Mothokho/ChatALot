@@ -1,21 +1,13 @@
-import { Col, Row } from "react-bootstrap";
+//import { Col, Row } from "react-bootstrap";
 import "./App.css";
-import { ButtonDanger } from "./components/Buttons";
+import Login from "@/components/Login";
+import { Toaster } from "./components/Toaster";
 
 function App() {
   return (
     <>
-      <Row>
-        <Col>
-          <input className="form-control" placeholder="hello" />
-        </Col>
-
-        <Col>
-          <ButtonDanger onClick={() => console.log("Clicked")}>
-            primary
-          </ButtonDanger>
-        </Col>
-      </Row>
+      <Login />
+      <Toaster message="toast" description="user logged in" />
     </>
   );
 }
