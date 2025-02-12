@@ -26,7 +26,7 @@ const formSchema = z.object({
   rememberMe: z.boolean(),
 });
 
-export default function MyForm() {
+export default function Login() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });

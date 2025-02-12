@@ -1,12 +1,12 @@
 //import { Col, Row } from "react-bootstrap";
 import "./App.css";
-import Login from "@/components/Login";
+import Register from "@/components/Register";
 import { Toaster } from "./components/Toaster";
 
 function App() {
   return (
     <>
-      <Login />
+      <Register />
       <Toaster message="toast" description="user logged in" />
     </>
   );
