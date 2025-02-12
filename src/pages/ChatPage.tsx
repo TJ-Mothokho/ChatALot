@@ -43,6 +43,7 @@ const ChatPage = () => {
           fallback="CN"
           image="https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU"
           url="#"
+          className="justify-center"
         />
       </div>
 
