@@ -16,79 +16,93 @@ import {
 } from "@/components/ui/sidebar";
 import DisplayAvatar from "./DisplayAvatar";
 import SearchUser from "./SearchUser";
-
-// Menu items.
-const users = [
-  {
-    username: "rafxjay",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "johndoe",
-    image: "https://github.com/shadcn.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "janedoe",
-    image: "https://github.com/janedoe.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "alice",
-    image: "https://github.com/alice.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "bobsmith",
-    image: "https://github.com/bobsmith.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "charlie",
-    image: "https://github.com/charlie.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "david",
-    image: "https://github.com/david.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "eve",
-    image: "https://github.com/eve.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "frank",
-    image: "https://github.com/frank.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "grace",
-    image: "https://github.com/grace.png",
-    fallback: "CN",
-    url: "#",
-  },
-  {
-    username: "heidi",
-    image: "https://github.com/heidi.png",
-    fallback: "CN",
-    url: "#",
-  },
-];
+import { PreloadContactList } from "./Preloader";
+import { useEffect, useState } from "react";
 
 export function AppSidebar() {
+  const [users, setUsers] = useState([
+    { username: "", image: "", fallback: "", url: "" },
+  ]);
+
+  //const [counter, setCounter] = useState(0);
+  const counter = 0;
+
+  useEffect(() => {
+    // while (counter <= 10) {
+    //   setCounter(counter + 1);
+    // }
+    // Menu items.
+    setUsers([
+      {
+        username: "rafxjay",
+        image:
+          "https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "johndoe",
+        image: "https://github.com/shadcn.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "janedoe",
+        image: "https://github.com/janedoe.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "alice",
+        image: "https://github.com/alice.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "bobsmith",
+        image: "https://github.com/bobsmith.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "charlie",
+        image: "https://github.com/charlie.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "david",
+        image: "https://github.com/david.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "eve",
+        image: "https://github.com/eve.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "frank",
+        image: "https://github.com/frank.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "grace",
+        image: "https://github.com/grace.png",
+        fallback: "CN",
+        url: "#",
+      },
+      {
+        username: "heidi",
+        image: "https://github.com/heidi.png",
+        fallback: "CN",
+        url: "#",
+      },
+    ]);
+  }, []);
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -103,17 +117,31 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {users.map((user) => (
-                <SidebarMenuItem key={user.username}>
-                  <SidebarMenuButton asChild className="h-15">
-                    <DisplayAvatar
-                      username={user.username}
-                      image={user.image}
-                      url={user.url}
-                    />
+              {users ? (
+                users.map((user) => (
+                  <SidebarMenuItem key={user.username}>
+                    <SidebarMenuButton asChild className="h-15">
+                      <DisplayAvatar
+                        username={user.username}
+                        image={user.image}
+                        url={user.url}
+                      />
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))
+              ) : (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild>
+                    {counter < 10 && (
+                      <>
+                        {Array.from({ length: 10 }, (_, i) => (
+                          <PreloadContactList key={i} />
+                        ))}
+                      </>
+                    )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

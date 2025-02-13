@@ -1,7 +1,8 @@
 //import { Col, Row } from "react-bootstrap";
 import "./App.css";
-import Layout from "./components/Layout";
-import ChatPage from "./pages/ChatPage";
+// import Layout from "./components/Layout";
+// import ChatPage from "./pages/ChatPage";
+import { LoginPage } from "./pages/LoginPage";
 
 function App() {
   localStorage.setItem("senderId", "1");
@@ -109,9 +110,11 @@ function App() {
 
   return (
     <>
-      <Layout>
+      {/* <Layout>
         <ChatPage />
-      </Layout>
+      </Layout> */}
+
+      <LoginPage />
     </>
   );
 }
