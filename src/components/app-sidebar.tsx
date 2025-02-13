@@ -15,6 +15,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import DisplayAvatar from "./DisplayAvatar";
+import SearchUser from "./SearchUser";
 
 // Menu items.
 const users = [
@@ -91,11 +92,15 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <h1>ChatALot</h1>
+        <h1 className="text-2xl mx-2 mt-1">ChatALot</h1>
+
+        <SearchUser />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Your contacts</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-lg">
+            Your contacts
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {users.map((user) => (

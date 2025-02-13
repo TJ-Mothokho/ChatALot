@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { SendHorizontal, PaperclipIcon } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 import "../styles/Message.css";
+import { ButtonPrimary } from "./Buttons";
 
 export function Message() {
   const [message, setMessage] = useState("");
@@ -23,13 +23,13 @@ export function Message() {
         className="mx-5 bg-white text-gray-950"
       />
 
-      <Button onClick={() => handleAttachment} className="mx-1">
+      <ButtonPrimary onClick={() => handleAttachment} className="mx-1">
         <PaperclipIcon />
-      </Button>
+      </ButtonPrimary>
 
-      <Button type="submit" onClick={() => handleSend} className="mx-1">
+      <ButtonPrimary onClick={() => handleSend} className="mx-1">
         <SendHorizontal />
-      </Button>
+      </ButtonPrimary>
     </div>
   );
 }

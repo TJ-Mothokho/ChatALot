@@ -35,6 +35,78 @@ function App() {
 
   localStorage.setItem("conversations", JSON.stringify(conversations));
 
+  const users = [
+    {
+      username: "rafxjay",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4D03AQErgNRo09axdw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731456261506?e=1744848000&v=beta&t=CxJYxuoes5hdaZplzqIcCYnPs3q8vycg_jGtvW1q4ZU",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "johndoe",
+      image: "https://github.com/shadcn.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "janedoe",
+      image: "https://github.com/janedoe.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "alice",
+      image: "https://github.com/alice.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "bobsmith",
+      image: "https://github.com/bobsmith.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "charlie",
+      image: "https://github.com/charlie.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "david",
+      image: "https://github.com/david.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "eve",
+      image: "https://github.com/eve.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "frank",
+      image: "https://github.com/frank.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "grace",
+      image: "https://github.com/grace.png",
+      fallback: "CN",
+      url: "#",
+    },
+    {
+      username: "heidi",
+      image: "https://github.com/heidi.png",
+      fallback: "CN",
+      url: "#",
+    },
+  ];
+
+  localStorage.setItem("users", JSON.stringify(users));
+
   return (
     <>
       <Layout>
