@@ -20,47 +20,35 @@ export function Toaster({ message, description, onClose, onContinue }: Props) {
   return (
     <Button
       variant="outline"
-      onClick={
-        () =>
-          toast.custom((t) => (
-            <div className="bg-white shadow-lg rounded-lg p-4 border border-gray-200 w-[300px] max-w-[90%] h-[auto]">
-              <p className="font-semibold">{message}</p>
-              <p className="text-gray-500">{description}</p>
-              <div className="flex justify-end gap-2 mt-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    toast.dismiss(t);
-                    onClose();
-                  }}
-                >
-                  Close
-                </Button>
-                <Button
-                  variant="default"
-                  size="sm"
-                  onClick={() => {
-                    toast.dismiss(t);
-                    onContinue();
-                  }}
-                >
-                  Continue
-                </Button>
-              </div>
+      onClick={() =>
+        toast.custom((t) => (
+          <div className="bg-white shadow-lg rounded-lg p-4 border border-gray-200 w-[300px] max-w-[90%] h-[auto]">
+            <p className="font-semibold">{message}</p>
+            <p className="text-gray-500">{description}</p>
+            <div className="flex justify-end gap-2 mt-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  toast.dismiss(t);
+                  onClose();
+                }}
+              >
+                Close
+              </Button>
+              <Button
+                variant="default"
+                size="sm"
+                onClick={() => {
+                  toast.dismiss(t);
+                  onContinue();
+                }}
+              >
+                Continue
+              </Button>
             </div>
-          ))
-
-        //     toast(message, {
-        //       description: description,
-        //       action: {
-        //         label: "Close",
-        //         onClick: onClose,
-
-        //         label: "Continue",
-        //         onClick: onContinue,
-        //       },
-        //     })
+          </div>
+        ))
       }
     >
       Show Toast

@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 //import {PasswordInput} from "@/components/ui/password-input"
 import { Switch } from "@/components/ui/switch";
+import { login } from "@/Services/AuthService";
 
 const formSchema = z.object({
   username: z.string(),
@@ -34,9 +35,15 @@ export default function Login() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       console.log(values);
+      const user = login(values.username, values.password);
+      if (!user) {
+        console.log("Invalid username or password.");
+      } else {
+        window.location.href = "/";
+      }
     } catch (error) {
       console.error("Form submission error", error);
-      //   toast("Failed to submit the form. Please try again.");
+      // toast("Failed to submit the form. Please try again.");
     }
   }
 

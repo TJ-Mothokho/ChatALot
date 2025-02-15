@@ -1,8 +1,12 @@
 //import { Col, Row } from "react-bootstrap";
 import "./App.css";
+import Layout from "./components/Layout";
+import ChatPage from "./pages/ChatPage";
+import HomePage from "./pages/HomePage";
 // import Layout from "./components/Layout";
 // import ChatPage from "./pages/ChatPage";
 import { LoginPage } from "./pages/LoginPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   localStorage.setItem("senderId", "1");
@@ -110,11 +114,35 @@ function App() {
 
   return (
     <>
-      {/* <Layout>
-        <ChatPage />
-      </Layout> */}
-
-      <LoginPage />
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <HomePage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/Home"
+            element={
+              <Layout>
+                <HomePage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/Chat/:ReceiverID"
+            element={
+              <Layout>
+                <ChatPage receiverID="" />
+              </Layout>
+            }
+          />
+        </Routes>
+      </Router>
     </>
   );
 }

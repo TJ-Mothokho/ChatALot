@@ -1,33 +1,43 @@
 import DisplayAvatar from "@/components/DisplayAvatar";
 import { Message } from "@/components/Message";
 import MessageBubble from "@/components/MessageBubble";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import { Toaster } from "@/components/Toaster";
 //import { Paperclip } from "lucide-react";
 //import React, { ReactNode } from "react";
 
-// interface Props {
-//   username: string;
-//   avatar: ReactNode;
-// }
+interface Props {
+  receiverID: string;
+}
 
-const ChatPage = () => {
-  const senderId = localStorage.getItem("senderId");
-  const receiverId = localStorage.getItem("receiverId");
+const ChatPage = ({ receiverID }: Props) => {
+  const userID = localStorage.getItem("userID");
 
   const [conversations, setConversations] = useState([
     {
-      message: "Hello!",
-      senderId: senderId,
-      receiverId: receiverId,
+      message: "",
+      senderId: "",
     },
   ]);
 
+  const getConversation = useCallback(async () => {
+    await axios
+      .get("" + receiverID)
+      .then((results) => {
+        setConversations(results.data);
+      })
+      .catch((error) => {
+        Toaster({
+          message: "Error",
+          description: `Couldn't load converstion. ${error}`,
+        });
+      });
+  }, [receiverID]);
+
   useEffect(() => {
-    const conversation = localStorage.getItem("conversations");
-    if (conversation != null) {
-      setConversations(JSON.parse(conversation));
-    }
-  }, []);
+    getConversation();
+  }, [getConversation]);
 
   return (
     <div className="px-10">
@@ -46,14 +56,14 @@ const ChatPage = () => {
           <div key={index}>
             <p
               className={`${
-                conversation.senderId === senderId ? "text-right" : "text-left"
+                conversation.senderId === userID ? "text-right" : "text-left"
               }`}
             >
-              {conversation.senderId === senderId ? "Me" : "Receiver"}
+              {conversation.senderId === userID ? "Me" : "Receiver"}
             </p>
             <MessageBubble
               message={conversation.message}
-              isSent={conversation.senderId === senderId}
+              isSent={conversation.senderId === userID}
             />
           </div>
         ))
@@ -64,6 +74,12 @@ const ChatPage = () => {
       <div className="items-end">
         <Message />
       </div>
+
+      <Toaster
+        message="Couldn't load chats"
+        description="Something went wrong"
+        onClose={() => console.log("toast")}
+      />
     </div>
   );
 };
