@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 //import {PasswordInput} from "@/components/ui/password-input"
 import { Switch } from "@/components/ui/switch";
 import { login } from "@/Services/AuthService";
+import { Toaster } from "./Toaster";
 
 const formSchema = z.object({
   username: z.string(),
@@ -32,13 +33,16 @@ export default function Login() {
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       console.log(values);
-      const user = login(values.username, values.password);
+      const user = await login(values.username, values.password);
       if (!user) {
+        console.log(user);
         console.log("Invalid username or password.");
+        alert("Invalid username or password.");
       } else {
+        console.log(user);
         window.location.href = "/";
       }
     } catch (error) {
@@ -103,6 +107,7 @@ export default function Login() {
             )}
           />
           <Button type="submit">Login</Button>
+          <Toaster message="test 2" description="testing 2" />
         </form>
       </Form>
     </>
