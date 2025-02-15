@@ -24,6 +24,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { InputFile } from "./InputFile";
+import { Label } from "./ui/label";
 
 const formSchema = z.object({
   username: z.string().min(2),
@@ -40,6 +41,8 @@ export default function Register() {
       dateOfBirth: new Date(),
     },
   });
+
+  const;
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -61,16 +64,30 @@ export default function Register() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 max-w-3xl mx-auto py-10"
       >
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input type="text" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-6">
             <FormField
               control={form.control}
-              name="username"
+              name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="text" {...field} />
+                    <Input type="password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -79,12 +96,14 @@ export default function Register() {
           </div>
 
           <div className="col-span-6">
+            <Label>Confirm Password</Label>
+            <Input />
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
                     <Input type="password" {...field} />
                   </FormControl>

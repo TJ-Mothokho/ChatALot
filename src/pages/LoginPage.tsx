@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 export function LoginPage() {
   return (
     <div>
-      <div className="flex justify-center">
-        <motion.h1
-          className="text-5xl font-bold mb-4 drop-shadow-sm text-blue-600 "
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Welcome to Chat A Lot
-        </motion.h1>
-      </div>
       <div className="flex justify-center items-center mt-5">
         <div className="flex">
           <div className="col-5">
+            <div className="flex justify-center mt-16">
+              <motion.h1
+                className="text-5xl font-bold mb-4 drop-shadow-sm text-blue-600 "
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                Welcome to Chat A Lot
+              </motion.h1>
+            </div>
             <img
               src={loginPicture}
-              className="img-fluid image-right h-[500px]"
+              className="img-fluid image-right h-[450px]"
               alt="imageHere"
             />
           </div>
