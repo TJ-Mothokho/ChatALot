@@ -18,6 +18,9 @@ import DisplayAvatar from "./DisplayAvatar";
 import SearchUser from "./SearchUser";
 import { PreloadContactList } from "./Preloader";
 import { useEffect, useState } from "react";
+import { PopOver } from "./PopOver";
+import { ButtonDanger, ButtonPrimary } from "./Buttons";
+import { logout } from "@/Services/AuthService";
 
 export function AppSidebar() {
   const [users, setUsers] = useState([
@@ -149,10 +152,21 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <a href="#">
-              <Settings />
-              <span className="text-lg">Settings</span>
-            </a>
+            <PopOver
+              children={
+                <div className="flex w-full hover:bg-sidebar-accent cursor-pointer h-15">
+                  <Settings />
+                  <span className="text-lg">Settings</span>
+                </div>
+              }
+              options={[
+                <ButtonPrimary onClick={() => console.log("clicked")}>
+                  Click me
+                </ButtonPrimary>,
+                <ButtonDanger onClick={logout}>Logout</ButtonDanger>,
+              ]}
+              description="This is your settings tab."
+            />
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarFooter>
