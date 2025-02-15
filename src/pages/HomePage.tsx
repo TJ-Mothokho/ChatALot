@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      navigate("/login");
+    }
+  });
+
   return (
     <div className="min-h-screen justify-center flex flex-col items-center">
       <motion.h1

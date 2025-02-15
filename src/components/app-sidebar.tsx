@@ -19,8 +19,9 @@ import SearchUser from "./SearchUser";
 import { PreloadContactList } from "./Preloader";
 import { useEffect, useState } from "react";
 import { PopOver } from "./PopOver";
-import { ButtonDanger, ButtonPrimary } from "./Buttons";
 import { logout } from "@/Services/AuthService";
+import { EditProfile } from "./EditProfile";
+import { ButtonDanger, ButtonPrimary } from "./Buttons";
 
 export function AppSidebar() {
   const [users, setUsers] = useState([
@@ -160,9 +161,15 @@ export function AppSidebar() {
                 </div>
               }
               options={[
-                <ButtonPrimary onClick={() => console.log("clicked")}>
-                  Click me
-                </ButtonPrimary>,
+                <EditProfile>
+                  <ButtonPrimary
+                    onClick={() => {
+                      console.log("edit profile");
+                    }}
+                  >
+                    Edit Profile
+                  </ButtonPrimary>
+                </EditProfile>,
                 <ButtonDanger onClick={logout}>Logout</ButtonDanger>,
               ]}
               description="This is your settings tab."
@@ -175,3 +182,8 @@ export function AppSidebar() {
 }
 
 //multiple contacts
+{
+  /* <ButtonPrimary onClick={() => console.log("clicked")}>
+                  Edit Profile
+                </ButtonPrimary> */
+}

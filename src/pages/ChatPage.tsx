@@ -4,6 +4,7 @@ import MessageBubble from "@/components/MessageBubble";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { Toaster } from "@/components/Toaster";
+import { useNavigate } from "react-router-dom";
 //import { Paperclip } from "lucide-react";
 //import React, { ReactNode } from "react";
 
@@ -35,9 +36,17 @@ const ChatPage = ({ receiverID }: Props) => {
       });
   }, [receiverID]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      navigate("/login");
+    }
+
     getConversation();
-  }, [getConversation]);
+  }, [getConversation, navigate]);
 
   return (
     <div className="px-10">
