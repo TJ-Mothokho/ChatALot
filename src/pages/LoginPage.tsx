@@ -1,24 +1,35 @@
-import Login from "@/components/Login";
-import Register from "@/components/Register";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { LoginTabs } from "@/components/LoginTabs";
+import loginPicture from "../../public/loginPicture.png";
+import { motion } from "framer-motion";
 
 export function LoginPage() {
   return (
-    <div className="flex justify-center items-center border">
-      <Tabs defaultValue="login" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="register">Register</TabsTrigger>
-        </TabsList>
+    <div>
+      <div className="flex justify-center">
+        <motion.h1
+          className="text-5xl font-bold mb-4 drop-shadow-sm text-blue-600 "
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Welcome to Chat A Lot
+        </motion.h1>
+      </div>
+      <div className="flex justify-center items-center mt-5">
+        <div className="flex">
+          <div className="col-5">
+            <img
+              src={loginPicture}
+              className="img-fluid image-right h-[500px]"
+              alt="imageHere"
+            />
+          </div>
 
-        <TabsContent value="login">
-          <Login />
-        </TabsContent>
-
-        <TabsContent value="register">
-          <Register />
-        </TabsContent>
-      </Tabs>
+          <div className="col-7">
+            <LoginTabs />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

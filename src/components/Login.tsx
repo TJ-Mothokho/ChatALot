@@ -17,10 +17,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-//import {PasswordInput} from "@/components/ui/password-input"
 import { Switch } from "@/components/ui/switch";
 import { login } from "@/Services/AuthService";
-import { Toaster } from "./Toaster";
 import { useDispatch } from "react-redux";
 import {
   setAccessToken,
@@ -128,7 +126,6 @@ export default function Login() {
             )}
           />
           <Button type="submit">Login</Button>
-          <Toaster message="test 2" description="testing 2" />
         </form>
       </Form>
     </>

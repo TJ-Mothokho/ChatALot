@@ -6,9 +6,9 @@ interface Props {
   onClick: () => void;
   className?: string;
 }
-export function ButtonPrimary({ children, onClick, className = "" }: Props) {
+export function ButtonPrimary({ children, onClick }: Props) {
   return (
-    <Button onClick={onClick} className={className}>
+    <Button onClick={onClick} className="bg-blue-600 text-white">
       {children}
     </Button>
   );
