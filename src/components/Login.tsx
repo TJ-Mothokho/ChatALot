@@ -21,6 +21,15 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { login } from "@/Services/AuthService";
 import { Toaster } from "./Toaster";
+import { useDispatch } from "react-redux";
+import {
+  setAccessToken,
+  setProfilePicture,
+  setRefreshToken,
+  setRole,
+  setUserID,
+  setUsername,
+} from "@/Services/TokenStore";
 
 const formSchema = z.object({
   username: z.string(),
@@ -33,21 +42,33 @@ export default function Login() {
     resolver: zodResolver(formSchema),
   });
 
+  const accessTokenDispatch = useDispatch(); // For token actions
+  const refreshTokenDispatch = useDispatch();
+  const userIDDispatch = useDispatch();
+  const usernameDispatch = useDispatch();
+  const roleDispatch = useDispatch();
+  const profilePictureDispatch = useDispatch();
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       console.log(values);
-      const user = await login(values.username, values.password);
-      if (!user) {
-        console.log(user);
+      const result = await login(values.username, values.password);
+      if (!result) {
+        console.log(result);
         console.log("Invalid username or password.");
         alert("Invalid username or password.");
       } else {
-        console.log(user);
+        accessTokenDispatch(setAccessToken(result.token)); // Save token
+        refreshTokenDispatch(setRefreshToken(result.refreshToken));
+        userIDDispatch(setUserID(result.userID));
+        usernameDispatch(setUsername(result.username));
+        profilePictureDispatch(setProfilePicture(result.profilePicture));
+        roleDispatch(setRole(result.role));
+        console.log(result);
         window.location.href = "/";
       }
     } catch (error) {
       console.error("Form submission error", error);
-      // toast("Failed to submit the form. Please try again.");
     }
   }
 

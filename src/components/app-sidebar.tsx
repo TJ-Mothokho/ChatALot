@@ -155,9 +155,9 @@ export function AppSidebar() {
           <SidebarMenuButton asChild>
             <PopOver
               children={
-                <div className="flex w-full hover:bg-sidebar-accent cursor-pointer h-15">
+                <div className="flex items-center w-full hover:bg-sidebar-accent cursor-pointer h-15">
                   <Settings />
-                  <span className="text-lg">Settings</span>
+                  <span className="text-2xl ml-2">Settings</span>
                 </div>
               }
               options={[
@@ -172,7 +172,7 @@ export function AppSidebar() {
                 </EditProfile>,
                 <ButtonDanger onClick={logout}>Logout</ButtonDanger>,
               ]}
-              description="This is your settings tab."
+              description="Click anywhere outside the popover to close."
             />
           </SidebarMenuButton>
         </SidebarMenuItem>

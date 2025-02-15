@@ -35,17 +35,14 @@ export function EditProfile({ children, newProfilePicture }: Props) {
   const userID = localStorage.getItem("userID");
 
   const handleSave = async () => {
-    console.log("here1");
     if (userID != null) {
       const data = new FormData();
       data.append("id", userID);
       data.append("username", username);
-      console.log("here2");
+
       if (profilePicture != undefined) {
         data.append("profilePicture", profilePicture);
-        console.log("here2maybe");
       }
-      console.log("here3");
 
       try {
         const response = await api.post("/User/Update", data);
