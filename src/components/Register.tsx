@@ -25,6 +25,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { InputFile } from "./InputFile";
 import { Label } from "./ui/label";
+import { useState } from "react";
 
 const formSchema = z.object({
   username: z.string().min(2),
@@ -42,11 +43,25 @@ export default function Register() {
     },
   });
 
-  const;
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log("here1");
     try {
       console.log(values);
+      console.log("here2");
+      if (values.password != confirmPassword) {
+        console.log("here3.1");
+        setError("Passwords doesn't match");
+        return;
+      } else {
+        console.log("here3.2");
+        setError("");
+      }
+
+      console.log("here4");
+
       toast(
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(values, null, 2)}</code>
@@ -97,20 +112,14 @@ export default function Register() {
 
           <div className="col-span-6">
             <Label>Confirm Password</Label>
-            <Input />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+            <Input
+              value={confirmPassword}
+              type="password"
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
             />
+            {error ? <p>{error}</p> : null}
           </div>
         </div>
 

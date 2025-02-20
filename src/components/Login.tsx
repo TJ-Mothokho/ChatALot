@@ -28,6 +28,7 @@ import {
   setUserID,
   setUsername,
 } from "@/Services/TokenStore";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   username: z.string(),
@@ -63,6 +64,9 @@ export default function Login() {
         profilePictureDispatch(setProfilePicture(result.profilePicture));
         roleDispatch(setRole(result.role));
         console.log(result);
+        toast.success(`Welcome, ${result.username}!`, {
+          description: "You have successfully logged in.",
+        });
         window.location.href = "/";
       }
     } catch (error) {
